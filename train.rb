@@ -7,6 +7,7 @@ class Train
 
 
   attr_reader :train_no, :name, :source,   :destination ,:route, :seats
+  attr_accessor :seats
 
   def initialize(train_no = "we1", name = "test" , source = "src1", destination = "des1", route = "route1", seats = 0)
     @train_no = train_no
@@ -44,7 +45,6 @@ class Train
       return false
     elsif
      trains.each_value do |train| 
-      byebug
       if train.source == source && train.destination == destination
         return true
       end
@@ -81,12 +81,7 @@ class Train
       available_seats = trains[train_no].seats
       puts "Enter number of tickets to book:"
       number_of_people = gets.chomp.to_i
-      if available_seats >= number_of_people
-        trains[train_no].instance_variable_set(:@seats, available_seats - number_of_people)
-        puts "#{number_of_people} tickets booked successfully. #{available_seats - number_of_people} seats remaining."
-      else
-        puts "Not enough seats available. Only #{available_seats} seats left."
-      end
+      available_seats >= number_of_people ? (trains[train_no].seats = (available_seats - number_of_people); puts "#{number_of_people} tickets booked successfully. #{available_seats - number_of_people} seats remaining.") : (puts "Not enough seats available. Only #{available_seats} seats left.")     
     else
       puts "Train number #{train_no} does not exist."
     end
