@@ -55,6 +55,7 @@ class Train
   def book_tickets(trains)
     puts "Enter the train number of the train to book tickets:"
     train_no = gets.chomp
+    return book_tickets(trains) if train_no == nil || train_no == ""
     if trains[train_no]
       available_seats = trains[train_no].seats.to_i
       puts "Enter number of tickets to book:"
