@@ -15,20 +15,23 @@ class Menu
     choice = gets.chomp.to_i
     case choice
     when 1
-      new_train = Train.new.create_train(trains)
-      trains[new_train.train_no] = new_train
+      # byebug
+       # Train.new(train_no, name, source, destination, route, seats)
+      # new_train = Train.new.create_train(trains,  train_no,name, source, destination,  route,  seats)
+     new_train =  Train.new(@train_no, @name, @source, @destination,  @route,  @seats).create_train(trains)
+      # trains[new_train.train_no] = new_train 
       open_main_menu(trains)
     when 2
-      view_train = Train.new.get_train(trains)
+      view_train = Train.new(@train_no, @name, @source, @destination,  @route,  @seats).get_train(trains)
       open_main_menu(trains)
     when 3
-      view_train = Train.new.search_by_source(trains)
+      view_train = Train.new(@train_no, @name, @source, @destination,  @route,  @seats).search_by_source(trains)
       open_main_menu(trains)
     when 4
-      view_train = Train.new.search_by_destination(trains)
+      view_train = Train.new(@train_no, @name, @source, @destination,  @route,  @seats).search_by_destination(trains)
       open_main_menu(trains)
     when 5
-      view_train = Train.new.book_tickets(trains)
+      view_train = Train.new(@train_no, @name, @source, @destination,  @route,  @seats).book_tickets(trains)
       open_main_menu(trains)
     when 6
       puts "Exiting....."
