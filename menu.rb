@@ -15,11 +15,7 @@ class Menu
     choice = gets.chomp.to_i
     case choice
     when 1
-      # byebug
-       # Train.new(train_no, name, source, destination, route, seats)
-      # new_train = Train.new.create_train(trains,  train_no,name, source, destination,  route,  seats)
      new_train =  Train.new(@train_no, @name, @source, @destination,  @route,  @seats).create_train(trains)
-      # trains[new_train.train_no] = new_train 
       open_main_menu(trains)
     when 2
       view_train = Train.new(@train_no, @name, @source, @destination,  @route,  @seats).get_train(trains)
