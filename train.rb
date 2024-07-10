@@ -41,15 +41,13 @@ class Train
   end
 
   def search_by_source(trains)
-   puts "Enter the source to search for any train from that source:"
-   source = gets.chomp
+    source = valid_input("Enter source of train:", "Please enter alphabatic source") {|input| input =~ /^[a-zA-Z\-\`]++(?: [a-zA-Z\-\`]++)?$/}
    result = trains.values.select { |train| train.source.include?(source) }
    display_search_results(result)
- end
+  end
 
  def search_by_destination(trains)
-  puts "Enter the destination to search for any train to that destination:"
-  destination = gets.chomp
+  destination = valid_input("Enter destination of train:", "Please enter alphabatic destination") {|input| input =~ /^[a-zA-Z\-\`]++(?: [a-zA-Z\-\`]++)?$/}
   result = trains.values.select { |train| train.destination.include?(destination) }
   display_search_results(result)
  end
